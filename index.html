@@ -39,7 +39,7 @@
   <script type="text/javascript">
     (function(b, r, a, n, c, h, _, s, d, k) {if (!b[n] || !b[n]._q) {for (; s < _.length;) c(h, _[s++]); d = r.createElement(a); d.async = 1; d.src = "https://cdn.branch.io/branch-latest.min.js"; k = r.getElementsByTagName(a)[0]; k.parentNode.insertBefore(d, k); b[n] = h; } })(window, document, "script", "branch", function(b, r) {b[r] = function() {b._q.push([r, arguments]); }; }, {_q: [], _v: 1 }, "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setIdentity track validateCode".split(" "), 0);
 
-    branch.init('key_live_bnzph7LB0peezd7lNZBb2keaxqkB66w4');
+    branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX');
 
     var analytics = {
       channel: 'channel',
@@ -48,18 +48,14 @@
       stage: 'stage',
       tags: ['one', 'two', 'three'],
       data: {
-        custom: 'data',
-        even_more_custom: true,
-        this_is_custom: 321,
-        $fallback_url: 'http://www.example.com/example',
-        $desktop_url: 'http://www.example.com/desktop',
-        $android_url: 'http://www.example.com/android',
-        $ios_url: 'http://www.example.com/ios',
-        $ipad_url: 'http://www.example.com/ipad',
-        $og_app_id: '12345',
-        $og_title: 'My app',
-        $og_description: 'My description.',
-        $og_image_url: 'http://lorempixel.com/400/400/'
+        '$canonical_identifier': 'content/123',
+        '$og_title': 'Title 123',   
+        '$og_description': 'Description 123',
+        '$og_image_url': 'http://www.lorempixel.com/400/400/',
+        '$deeplink_path': 'content/123',
+        'custom': true,
+        'random': 123,
+        'anything': 'everything'
       }
     };
 
