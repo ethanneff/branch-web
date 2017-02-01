@@ -37,7 +37,7 @@
 
   <!-- branch -->
   <script type="text/javascript">
-    // cache DOM
+    // (optional) cache DOM
     var customDeepViewImage = document.getElementById('image');
     var customDeepViewTitle = document.getElementById('title');
     var customDeepViewDescription = document.getElementById('description');
@@ -48,9 +48,11 @@
     // branch init
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(res,err) {
       console.log(res, err);
+      // (optional) if a deep link opens this page, update your Deep View with the deep link data
+      console.log(res['$og_title']);
     });
     
-    // handle branch Deep View button click: onclick="branch.deepviewCta()"
+    // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
     var analytics = {
       channel: 'channel',
       feature: 'feature',
