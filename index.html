@@ -42,11 +42,8 @@
   
     // branch init
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(err,res) {
-      // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/djUvZ3SWpA), update your Deep View with the deep link data
       console.log(err,res);
-      document.getElementById('title').innerHTML = res.data_parsed.$og_title
-      document.getElementById('description').innerHTML = res.data_parsed.$og_description
-      document.getElementById('image').src = res.data_parsed.$og_image_url
+      updateViewWithBranchData(res);
     });
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
@@ -74,6 +71,17 @@
     branch.deepview(analytics, properties, function(err) {
       console.log(err || 'no error');
     });
+    
+    // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/djUvZ3SWpA), update your Deep View with the deep link data    
+    function updateViewWithBranchData (data) { 
+      var title = document.getElementById('title');
+      var description = document.getElementById('description');
+      var image = document.getElementById('image');
+      
+      title.innerHTML = res.data_parsed.$og_title || title.innerHTML;
+      description.innerHTML = res.data_parsed.$og_description || description.innerHTML
+      image.src = res.data_parsed.$og_image_url || image.src;
+    }    
   </script>
 </body>
 </html>
