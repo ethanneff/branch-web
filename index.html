@@ -51,7 +51,7 @@
       // (optional) if a deep link opens this page, update your Deep View with the deep link data
       console.log(err,res);
       a = res;
-      console.log(res['$og_title']);
+      console.log(res.data_parsed.['$og_title']);
     });
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
@@ -74,7 +74,7 @@
     };
     var properties = {
       make_new_link: false,    // Should the deepview create a new link, even if a link already exists?
-      open_app: true           // Should the deepview try to open the app passively (without the user actively clicking) on load?
+      open_app: true           // Should the deepview try to open the app passively on load? (for deprecated URI Schemes only)
     };
     branch.deepview(analytics, properties, function(err) {
       console.log(err || 'no error');
