@@ -46,7 +46,7 @@
       console.log(err,res);
       document.getElementById('title').innerHTML = res.data_parsed.$og_title
       document.getElementById('description').innerHTML = res.data_parsed.$og_description
-      document.getElementById('image').innerHTML = res.data_parsed.$og_image_url
+      document.getElementById('image').src = res.data_parsed.$og_image_url
     });
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
