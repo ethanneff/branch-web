@@ -65,14 +65,14 @@
       }
     };
     var properties = {
-      make_new_link: false,    // Should the deepview create a new link, even if a link already exists?
+      make_new_link: true,     // Should the deepview create a new link, even if a link already exists?
       open_app: true           // Should the deepview try to open the app passively on load? (for deprecated URI Schemes only)
     };
     branch.deepview(analytics, properties, function(err) {
       console.log(err || 'no error');
     });
     
-    // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/djUvZ3SWpA), update your Deep View with the deep link data    
+    // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/rljEdIKXpA), update your Deep View with the deep link data    
     function updateViewWithBranchDeepLinkData (res) { 
       var title = document.getElementById('title');
       var description = document.getElementById('description');
