@@ -43,7 +43,7 @@
     // branch init
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(err,res) {
       console.log(err,res);
-      updateViewWithBranchData(res);
+      updateViewWithBranchDeepLinkData(res);
     });
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
@@ -73,7 +73,7 @@
     });
     
     // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/djUvZ3SWpA), update your Deep View with the deep link data    
-    function updateViewWithBranchData (res) { 
+    function updateViewWithBranchDeepLinkData (res) { 
       var title = document.getElementById('title');
       var description = document.getElementById('description');
       var image = document.getElementById('image');
