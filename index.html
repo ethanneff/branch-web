@@ -39,50 +39,31 @@
   <script type="text/javascript">
     (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
 
-//     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX');
-    
-//     var analytics = {
-//       channel: 'channel',
-//       feature: 'feature',
-//       campaign: 'campaign',
-//       stage: 'stage',
-//       tags: ['one', 'two', 'three'],
-//       data: {
-//         '$canonical_identifier': 'content/123',
-//         '$og_title': 'Title 123',   
-//         '$og_description': 'Description 123',
-//         '$og_image_url': 'http://www.lorempixel.com/400/400/',
-//         '$deeplink_path': 'content/123',
-//         'custom': true,
-//         'random': 123,
-//         'anything': 'everything'
-//       }
-//     };
-//     var properties = {
-//       make_new_link: false,    // Should the deepview create a new link, even if a link already exists?
-//       open_app: true           // Should the deepview try to open the app passively (without the user actively clicking) on load?
-//     };
-//     branch.deepview(analytics, properties, function(err) {
-//       console.log(err || 'no error');
-//     });
-
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX');
-
-    branch.deepview(
-    {
-      channel: 'mobile_web',
-      feature: 'deepview',
-      data : {
-        "$deeplink_path": "merchant/183",
-        "$og_url": "http://www.seecows.com/preview/business/183",
-        "$og_title": "Mr. Sub",
-        "$og_description": "Follow Mr. Sub on Seecows to never miss their next great promotion!",
-        "$og_image_url": "https://res.cloudinary.com/seecows/image/upload/w_200,h_200,c_pad,b_white/v1481936969/f3clu3lsf7vswvkmyqzu.png",
-        "merchant_id": 183
+    
+    var analytics = {
+      channel: 'channel',
+      feature: 'feature',
+      campaign: 'campaign',
+      stage: 'stage',
+      tags: ['one', 'two', 'three'],
+      data: {
+        '$canonical_identifier': 'content/123',
+        '$og_title': 'Title 123',   
+        '$og_description': 'Description 123',
+        '$og_image_url': 'http://www.lorempixel.com/400/400/',
+        '$deeplink_path': 'content/123',
+        'custom': true,
+        'random': 123,
+        'anything': 'everything'
       }
-    },
-    {
-      open_app: true
+    };
+    var properties = {
+      make_new_link: false,    // Should the deepview create a new link, even if a link already exists?
+      open_app: true           // Should the deepview try to open the app passively (without the user actively clicking) on load?
+    };
+    branch.deepview(analytics, properties, function(err) {
+      console.log(err || 'no error');
     });
   </script>
 </body>
