@@ -37,6 +37,7 @@
 
   <!-- branch -->
   <script type="text/javascript">
+    var a;
     // (optional) cache DOM
     var customDeepViewImage = document.getElementById('image');
     var customDeepViewTitle = document.getElementById('title');
@@ -49,6 +50,7 @@
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(err,res) {
       // (optional) if a deep link opens this page, update your Deep View with the deep link data
       console.log(err,res);
+      a = res;
       console.log(res['$og_title']);
     });
     
