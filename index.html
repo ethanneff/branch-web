@@ -37,21 +37,16 @@
 
   <!-- branch -->
   <script type="text/javascript">
-    var a;
-    // (optional) cache DOM
-    var customDeepViewImage = document.getElementById('image');
-    var customDeepViewTitle = document.getElementById('title');
-    var customDeepViewDescription = document.getElementById('description');
-    
     // branch code
     (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
   
     // branch init
     branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(err,res) {
-      // (optional) if a deep link opens this page, update your Deep View with the deep link data
+      // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/djUvZ3SWpA), update your Deep View with the deep link data
       console.log(err,res);
-      a = res;
-      console.log(res.data_parsed['$og_title']);
+      document.getElementById('title').innerHTML = res.data_parsed.$og_title
+      document.getElementById('description').innerHTML = res.data_parsed.$og_description
+      document.getElementById('image').innerHTML = res.data_parsed.$og_image_url
     });
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
