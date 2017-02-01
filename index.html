@@ -24,9 +24,9 @@
       <h1>Branch Testing</h1>
     </header>
     <section>
-      <img id="image"src="http://lorempixel.com/400/400/">
-      <h3 id="title">Title</h3>
-      <p id="description">Description</p>
+      <img src="http://lorempixel.com/400/400/">
+      <h3>Title</h3>
+      <p>Description</p>
       <button type="button" onclick="branch.deepviewCta()">Get the app</button>
     </section>
     <footer>
@@ -41,10 +41,7 @@
     (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
   
     // branch init
-    branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX', function(err,res) {
-      console.log(err,res);
-      updateViewWithBranchDeepLinkData(res);
-    });
+    branch.init('key_live_bnqms55FOCWVB2s5FctFKjfdxFjQfgFX');
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
     var analytics = {
@@ -70,18 +67,7 @@
     };
     branch.deepview(analytics, properties, function(err) {
       console.log(err || 'no error');
-    });
-    
-    // (optional) if a deep link opens this page (e.g. https://s3z3.app.link/rljEdIKXpA), update your Deep View with the deep link data    
-    function updateViewWithBranchDeepLinkData (res) { 
-      var title = document.getElementById('title');
-      var description = document.getElementById('description');
-      var image = document.getElementById('image');
-      
-      title.innerHTML = res.data_parsed.$og_title || title.innerHTML;
-      description.innerHTML = res.data_parsed.$og_description || description.innerHTML
-      image.src = res.data_parsed.$og_image_url || image.src;
-    }    
+    });   
   </script>
 </body>
 </html>
