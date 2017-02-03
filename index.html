@@ -21,7 +21,7 @@
   <!-- content -->
   <div class="wrapper">
     <header>
-      <h1>Branch Deepview 2</h1>
+      <h1>Branch Deepview 2.1</h1>
     </header>
     <section>
       <img src="http://lorempixel.com/400/400/">
@@ -44,27 +44,8 @@
     branch.init('key_live_cnChxhZYcC9rBMAG82xLNjdcFBokyGD0');
     
     // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
-    var analytics = {
-      channel: 'channel',
-      feature: 'feature',
-      campaign: 'campaign',
-      stage: 'stage',
-      tags: ['one', 'two', 'three'],
-      data: {
-        '$canonical_identifier': 'content/123',
-        '$og_title': 'Title 123',   
-        '$og_description': 'Description 123',
-        '$og_image_url': 'http://www.lorempixel.com/400/400/',
-        '$deeplink_path': 'content/123',
-        'custom': true,
-        'random': 123,
-        'anything': 'everything'
-      }
-    };
-    var properties = {
-      make_new_link: true,     // Should the deepview create a new link, even if a link already exists?
-      open_app: true           // Should the deepview try to open the app passively on load? (for deprecated URI Schemes only)
-    };
+    var analytics = {};
+    var properties = {};
     branch.deepview(analytics, properties, function(err) {
       console.log(err || 'no error');
     });   
