@@ -21,13 +21,15 @@
   <!-- content -->
   <div class="wrapper">
     <header>
-      <h1>Branch Deepview 2.1</h1>
+      <h1>Branch Test</h1>
     </header>
-    <section>
-      <img src="http://lorempixel.com/400/400/">
-      <h3>Title</h3>
-      <p>Description</p>
-      <button type="button" onclick="branch.deepviewCta()">Get the app</button>
+    <section>      
+      <button type="button" id="login">User Login</button>
+      <button type="button" id="logout">User Logout</button>
+      <button type="button" id="obtain">Referral Obtain</button>      
+      <button type="button" id="spend">Referral Spend</button>      
+      <button type="button" id="credits">Referral Credits</button>
+      <button type="button" id="history">Referral History</button>
     </section>
     <footer>
       <p><small>&mdash; <a href="https://github.com/ethanneff/branch-deepview-2">view the code</a> &mdash;</small></p>
@@ -38,17 +40,56 @@
   <!-- branch -->
   <script type="text/javascript">
     // branch code
-    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
-  
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+      
     // branch init
-    branch.init('key_live_bnzph7LB0peezd7lNZBb2keaxqkB66w4');
+    branch.init('key_live_nmEmfIlcPqjEsuDHIQZ8GdcpsFbXW3gG');
     
-    // handle <button> onclick="branch.deepviewCta()" with branch.deepview()
-    var analytics = {};
-    var properties = {};
-    branch.deepview(analytics, properties, function(err) {
-      console.log(err || 'no error');
-    });   
+    // cache DOM
+    document.getElementById('login').addEventListener("click", userLogin); 
+    document.getElementById('logout').addEventListener("click", userLogout); 
+    document.getElementById('obtain').addEventListener("click", referralObtain);    
+    document.getElementById('spend').addEventListener("click", referralSpend);
+    document.getElementById('credits').addEventListener("click", referralCredits);
+    document.getElementById('history').addEventListener("click", referralHistory);
+    
+    // methods
+    function userLogin() {
+      branch.setIdentity('bob', function(err,data) {
+      	alert('error: ' + err, 'data: ' + data);
+      });
+    }
+    
+    function userLogout() {
+      branch.setIdentity(function(err,data) {
+      	alert('error: ' + err, 'data: ' + data);
+      });      
+    }
+    
+    function referralObtain() {
+      // 10 into main
+      branch.track('done', function(err,data) {
+      	alert('error: ' + err, 'data: ' + data);
+      });
+    }
+    
+    function referralSpend() {
+      branch.redeem(5, 'main', function(err,data) {
+      	alert('error: ' + err, 'data: ' + data);
+      });
+    }
+    
+    function referralCredits() {
+      branch.credits(function(err,data) {
+        alert('error: ' + err, 'data: ' + data);
+      });      
+    }
+
+    function referralHistory() {
+      branch.creditHistory(function(err,data) {
+        alert('error: ' + err, 'data: ' + data);
+      });
+    }
   </script>
 </body>
 </html>
