@@ -67,14 +67,14 @@
     }
     
     function referralObtain() {
-      // 10 into main
+      // 10
       branch.track('done', function(err,data) {
       	alert('error: ' + err, 'data: ' + data);
       });
     }
     
     function referralSpend() {
-      branch.redeem(5, 'main', function(err,data) {
+      branch.redeem(5, function(err,data) {
       	alert('error: ' + err, 'data: ' + data);
       });
     }
