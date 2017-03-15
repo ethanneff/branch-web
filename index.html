@@ -26,16 +26,29 @@
       <a href="branchsters://">branchsters</a>
       <a href="branchcordova://">branch cordova</a>
     </header>
-    <section>      
-      <button type="button" id="login">User Login</button>
-      <button type="button" id="logout">User Logout</button>
-      <button type="button" id="reward">Referral Reward</button>      
-      <button type="button" id="redeem">Referral Redeem</button>      
-      <button type="button" id="credits">Referral Credits</button>
-      <button type="button" id="history">Referral History</button>
-    </section>
-    <section>
-      
+    <section>  
+      <fieldset>
+        <legend>Link</legend>
+        <button type="button" id="link">Link Create</button>
+        <div id="output"></div>
+        <a id="anchor"></a>
+      </fieldset>      
+      <fieldset>
+        <legend>User</legend>
+        <button type="button" id="login">User Login</button>
+        <button type="button" id="logout">User Logout</button>
+      </fieldset>
+      <fieldset>
+        <legend>Event</legend>
+        <button type="button" id="login">Event Create</button>
+      </fieldset>
+      <fieldset>
+        <legend>Referrals</legend>
+        <button type="button" id="reward">Referral Reward</button>      
+        <button type="button" id="redeem">Referral Redeem</button>      
+        <button type="button" id="credits">Referral Credits</button>
+        <button type="button" id="history">Referral History</button>
+      </fieldset>
     </section>
     <footer>
       <p><small>&mdash; <a href="https://github.com/ethanneff/branch-deepview-2">view the code</a> &mdash;</small></p>
@@ -54,16 +67,38 @@
     });
     
     // cache DOM
+    document.getElementById('link').addEventListener("click", linkCreate);
     document.getElementById('login').addEventListener("click", userLogin); 
     document.getElementById('logout').addEventListener("click", userLogout); 
+    document.getElementById('event').addEventListener("click", eventCreate); 
     document.getElementById('reward').addEventListener("click", referralReward);    
     document.getElementById('redeem').addEventListener("click", referralRedeem);
     document.getElementById('credits').addEventListener("click", referralCredits);
     document.getElementById('history').addEventListener("click", referralHistory);
-    document.getElementById('link').addEventListener("click", linkCreate);
     document.getElementById('output');
     
     // methods
+    function linkCreate() {
+      branch.link({
+        tags: [ 'tag1', 'tag2' ],
+        channel: 'facebook',
+        feature: 'dashboard',
+        stage: 'new user',
+        alias: alias.value || '',
+        data: {
+          'custom_bool': true,
+          'custom_int': 123,
+          'custom_string': 'hello',
+          '$og_title': Date.now(),
+          '$og_description': 'Description',
+          '$og_image_url':'http://lorempixel.com/400/400'
+        }
+      }, function(err, link) {
+        console.log(link || err);
+        output.innerHTML = link || err + " = link already exists with that alias";
+      });
+    }    
+    
     function userLogin() {
       branch.setIdentity('bob', function(err,data) {
       	alert('error: ' + err + ' data: ' + data);
@@ -74,6 +109,12 @@
       branch.setIdentity(function(err,data) {
         alert('error: ' + err + ' data: ' + data);
       });      
+    }
+
+    function eventCreate() {
+      branch.track('random-event', function(err,data) {
+      	alert('error: ' + err + ' data: ' + data);
+      });
     }
     
     function referralReward() {
@@ -98,28 +139,6 @@
     function referralHistory() {
       branch.creditHistory(function(err,data) {
       	alert('error: ' + err + ' data: ' + data);
-      });
-    }
-    
-    function linkCreate() {
-      branch.link({
-        tags: [ 'tag1', 'tag2' ],
-        channel: 'facebook',
-        feature: 'dashboard',
-        stage: 'new user',
-        alias: alias.value || '',
-        data: {
-          'custom_bool': true,
-          'custom_int': 123,
-          'custom_string': 'hello',
-          '$og_title': Date.now(),
-          '$og_description': 'Description',
-          '$og_image_url':'http://lorempixel.com/400/400'
-        }
-      }, function(err, link) {
-        // link completion
-        console.log(link || err);
-        output.innerHTML = link || err + " = link already exists with that alias";
       });
     }
   </script>
