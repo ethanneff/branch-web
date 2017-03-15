@@ -2,81 +2,88 @@
 <html>
 <head>
   <!-- meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='chrome=1'>
   <title>Branch Testing by ethanneff</title>
-  <meta name="viewport" content="width=device-width">
+  <meta name='viewport' content='width=device-width'>
 
   <!-- styles -->
-  <style type="text/css" media="screen">
+  <style type='text/css' media='screen'>
     * { margin: 0; padding: 0; box-sizing: border-box; color: #212121; text-align: center; border: none;}
+    fieldset { width: 90%; max-width: 30em; border: 1px solid #212121; margin: 0 auto;}
     body { background-color: #fafafa; border-top: 0.5em solid #212121; }
+    button, input, p { padding: 1em; margin: 0.5em auto; width: 90%; font-size: 1em;}
+    button { background-color: #212121; color: #ffffff; }
+    input { background-color: #fafafa; color: #212121; }
     a { text-decoration: none; color: #03a9f4; }
-    img {max-width: 90%}
-    button {padding: 1em; margin: 0.5em; width: 90%; max-width: 25em; background-color: #212121; color: #ffffff; font-size: 1em;}
   </style>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src='//html5shiv.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
 </head>
 <body>
   <!-- content -->
-  <div class="wrapper">
+  <div class='wrapper'>
     <header>
-      <h1>Branch Test</h1>
-      <a href="branchandroid://">branch android</a>
-      <a href="branchsters://">branchsters</a>
-      <a href="branchcordova://">branch cordova</a>
+      <h1>Branch Testing</h1>
     </header>
-    <section>  
+    <section>
       <fieldset>
         <legend>Link</legend>
-        <button type="button" id="link">Link Create</button>
-        <div id="output"></div>
-        <a id="anchor"></a>
-      </fieldset>      
+        <button type='button' id='link'>Link Create</button>
+        <button id='button' hidden></button>
+        <p id='anchor-wrapper' hidden><a id='anchor'></a></p>
+        <p><a href='https://dashboard.branch.io/liveview/links'>https://dashboard.branch.io/liveview/links</a></p>
+      </fieldset>
       <fieldset>
         <legend>User</legend>
-        <button type="button" id="login">User Login</button>
-        <button type="button" id="logout">User Logout</button>
+        <input type='text' placeholder='user id' id='user'>
+        <button type='button' id='login'>User Login</button>
+        <button type='button' id='logout'>User Logout</button>
+        <p><a href='https://dashboard.branch.io/liveview/identities'>https://dashboard.branch.io/liveview/identities</a></p>
       </fieldset>
       <fieldset>
         <legend>Event</legend>
-        <button type="button" id="login">Event Create</button>
+        <input type='text' placeholder='event name' id='event'>
+        <button type='button' id='track'>Event Create</button>
+        <p><a href='https://dashboard.branch.io/liveview/events'>https://dashboard.branch.io/liveview/events</a></p>
       </fieldset>
       <fieldset>
         <legend>Referrals</legend>
-        <button type="button" id="reward">Referral Reward</button>      
-        <button type="button" id="redeem">Referral Redeem</button>      
-        <button type="button" id="credits">Referral Credits</button>
-        <button type="button" id="history">Referral History</button>
+        <button type='button' id='reward'>Referral Reward</button>
+        <button type='button' id='redeem'>Referral Redeem</button>
+        <button type='button' id='credits'>Referral Credits</button>
+        <button type='button' id='history'>Referral History</button>
+        <p><a href='https://dashboard.branch.io/referrals/rules'>https://dashboard.branch.io/referrals/rules</a></p>
       </fieldset>
     </section>
     <footer>
-      <p><small>&mdash; <a href="https://github.com/ethanneff/branch-deepview-2">view the code</a> &mdash;</small></p>
-      <p><small>&mdash; <a href="https://github.com/ethanneff">ethanneff</a> &mdash;</small></p>
+      <p><small>&mdash; <a href='https://github.com/ethanneff/branch-deepview-2'>view the code</a> &mdash;</small></p>
+      <p><small>&mdash; <a href='https://github.com/ethanneff'>ethanneff</a> &mdash;</small></p>
     </footer>
   </div>
 
   <!-- branch -->
-  <script type="text/javascript">
-    // branch code
-    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
-      
+  <script type='text/javascript'>
+    // branch import
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
+
     // branch init
-    branch.init('key_live_bnzph7LB0peezd7lNZBb2keaxqkB66w4', function(err,data) {
-      // alert(JSON.stringify(data));
-    });
-    
+    branch.init('key_live_nmEmfIlcPqjEsuDHIQZ8GdcpsFbXW3gG');
+
     // cache DOM
-    document.getElementById('link').addEventListener("click", linkCreate);
-    document.getElementById('login').addEventListener("click", userLogin); 
-    document.getElementById('logout').addEventListener("click", userLogout); 
-    document.getElementById('event').addEventListener("click", eventCreate); 
-    document.getElementById('reward').addEventListener("click", referralReward);    
-    document.getElementById('redeem').addEventListener("click", referralRedeem);
-    document.getElementById('credits').addEventListener("click", referralCredits);
-    document.getElementById('history').addEventListener("click", referralHistory);
-    document.getElementById('output');
-    
+    document.getElementById('link').addEventListener('click', linkCreate);
+    document.getElementById('login').addEventListener('click', userLogin);
+    document.getElementById('logout').addEventListener('click', userLogout);
+    document.getElementById('track').addEventListener('click', eventCreate);
+    document.getElementById('reward').addEventListener('click', referralReward);
+    document.getElementById('redeem').addEventListener('click', referralRedeem);
+    document.getElementById('credits').addEventListener('click', referralCredits);
+    document.getElementById('history').addEventListener('click', referralHistory);
+    var button = document.getElementById('button');
+    var anchorWrapper = document.getElementById('anchor-wrapper');
+    var anchor = document.getElementById('anchor');
+    var user = document.getElementById('user');
+    var event = document.getElementById('event');
+
     // methods
     function linkCreate() {
       branch.link({
@@ -84,7 +91,7 @@
         channel: 'facebook',
         feature: 'dashboard',
         stage: 'new user',
-        alias: alias.value || '',
+        alias: '',
         data: {
           'custom_bool': true,
           'custom_int': 123,
@@ -94,51 +101,52 @@
           '$og_image_url':'http://lorempixel.com/400/400'
         }
       }, function(err, link) {
-        console.log(link || err);
-        output.innerHTML = link || err + " = link already exists with that alias";
-      });
-    }    
-    
-    function userLogin() {
-      branch.setIdentity('bob', function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
+        button.removeAttribute('hidden')
+        anchorWrapper.removeAttribute('hidden')
+        button.onclick = function () { window.open(link || err); };
+        button.innerHTML = link || err + ' = link already exists with that alias';
+        anchor.href = link || err + ' = link already exists with that alias';
+        anchor.innerHTML = link || err + ' = link already exists with that alias';
       });
     }
-    
+
+    function userLogin() {
+      branch.setIdentity(user.value || 'blank');
+    }
+
     function userLogout() {
-      branch.setIdentity(function(err,data) {
-        alert('error: ' + err + ' data: ' + data);
-      });      
+      branch.logout();
+      user.value = '';
     }
 
     function eventCreate() {
       branch.track('random-event', function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
+        alert('error: ' + err + ' data: ' + JSON.stringify(data));
       });
     }
-    
+
     function referralReward() {
       // 10
       branch.track('done', function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
+        alert('error: ' + err + ' data: ' + JSON.stringify(data));
       });
     }
-    
+
     function referralRedeem() {
       branch.redeem(5, 'default', function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
+        alert('error: ' + err + ' data: ' + JSON.stringify(data));
       });
     }
-    
+
     function referralCredits() {
       branch.credits(function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
-      });      
+        alert('error: ' + err + ' data: ' + JSON.stringify(data));
+      });
     }
 
     function referralHistory() {
       branch.creditHistory(function(err,data) {
-      	alert('error: ' + err + ' data: ' + data);
+        alert('error: ' + err + ' data: ' + JSON.stringify(data));
       });
     }
   </script>
