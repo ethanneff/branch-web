@@ -34,6 +34,9 @@
       <button type="button" id="credits">Referral Credits</button>
       <button type="button" id="history">Referral History</button>
     </section>
+    <section>
+      
+    </section>
     <footer>
       <p><small>&mdash; <a href="https://github.com/ethanneff/branch-deepview-2">view the code</a> &mdash;</small></p>
       <p><small>&mdash; <a href="https://github.com/ethanneff">ethanneff</a> &mdash;</small></p>
@@ -57,6 +60,8 @@
     document.getElementById('redeem').addEventListener("click", referralRedeem);
     document.getElementById('credits').addEventListener("click", referralCredits);
     document.getElementById('history').addEventListener("click", referralHistory);
+    document.getElementById('link').addEventListener("click", linkCreate);
+    document.getElementById('output');
     
     // methods
     function userLogin() {
@@ -93,6 +98,28 @@
     function referralHistory() {
       branch.creditHistory(function(err,data) {
       	alert('error: ' + err + ' data: ' + data);
+      });
+    }
+    
+    function linkCreate() {
+      branch.link({
+        tags: [ 'tag1', 'tag2' ],
+        channel: 'facebook',
+        feature: 'dashboard',
+        stage: 'new user',
+        alias: alias.value || '',
+        data: {
+          'custom_bool': true,
+          'custom_int': 123,
+          'custom_string': 'hello',
+          '$og_title': Date.now(),
+          '$og_description': 'Description',
+          '$og_image_url':'http://lorempixel.com/400/400'
+        }
+      }, function(err, link) {
+        // link completion
+        console.log(link || err);
+        output.innerHTML = link || err + " = link already exists with that alias";
       });
     }
   </script>
