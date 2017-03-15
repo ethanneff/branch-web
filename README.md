@@ -1,3 +1,3 @@
 # branch-deepview
 
-[click here](https://ethanneff.github.com/branch-deepview-2) to view live
+[click here](https://ethanneff.github.com/branch-web) to view live
