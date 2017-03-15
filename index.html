@@ -32,20 +32,20 @@
         <button type='button' id='link'>Link Create</button>
         <button id='button' hidden></button>
         <p id='anchor-wrapper' hidden><a id='anchor'></a></p>
-        <p><a href='https://dashboard.branch.io/liveview/links'>/liveview/links</a></p>
+        <p><a href='https://dashboard.branch.io/liveview/links' target="_blank">/liveview/links</a></p>
       </fieldset>
       <fieldset>
         <legend>User</legend>
         <input type='text' placeholder='user id' id='user'>
         <button type='button' id='login'>User Login</button>
         <button type='button' id='logout'>User Logout</button>
-        <p><a href='https://dashboard.branch.io/liveview/identities'>/liveview/identities</a></p>
+        <p><a href='https://dashboard.branch.io/liveview/identities' target="_blank">/liveview/identities</a></p>
       </fieldset>
       <fieldset>
         <legend>Event</legend>
         <input type='text' placeholder='event name' id='event'>
         <button type='button' id='track'>Event Create</button>
-        <p><a href='https://dashboard.branch.io/liveview/events'>/liveview/events</a></p>
+        <p><a href='https://dashboard.branch.io/liveview/events' target="_blank">/liveview/events</a></p>
       </fieldset>
       <fieldset>
         <legend>Referrals</legend>
@@ -53,11 +53,11 @@
         <button type='button' id='redeem'>Referral Redeem</button>
         <button type='button' id='credits'>Referral Credits</button>
         <button type='button' id='history'>Referral History</button>
-        <p><a href='https://dashboard.branch.io/referrals/rules'>/referrals/rules</a></p>
+        <p><a href='https://dashboard.branch.io/referrals/rules' target="_blank">/referrals/rules</a></p>
       </fieldset>
     </section>
     <footer>
-      <p><small>&mdash; <a href='https://github.com/ethanneff/branch-deepview-2'>view the code</a> &mdash;</small></p>
+      <p><small>&mdash; <a href='https://github.com/ethanneff/branch-web'>view the code</a> &mdash;</small></p>
       <p><small>&mdash; <a href='https://github.com/ethanneff'>ethanneff</a> &mdash;</small></p>
     </footer>
   </div>
@@ -82,8 +82,8 @@
     var button = document.getElementById('button');
     var anchorWrapper = document.getElementById('anchor-wrapper');
     var anchor = document.getElementById('anchor');
-    var user = document.getElementById('user');
-    var event = document.getElementById('event');
+    var userName = document.getElementById('user');
+    var eventName = document.getElementById('event');
 
     // methods
     function linkCreate() {
@@ -102,8 +102,8 @@
           '$og_image_url':'http://lorempixel.com/400/400'
         }
       }, function(err, link) {
-        button.removeAttribute('hidden')
-        anchorWrapper.removeAttribute('hidden')
+        button.removeAttribute('hidden');
+        anchorWrapper.removeAttribute('hidden');
         button.onclick = function () { window.open(link || err); };
         button.innerHTML = link || err + ' = link already exists with that alias';
         anchor.href = link || err + ' = link already exists with that alias';
@@ -112,25 +112,21 @@
     }
 
     function userLogin() {
-      branch.setIdentity(user.value || 'blank');
+      branch.setIdentity(userName.value || 'blank');
     }
 
     function userLogout() {
       branch.logout();
-      user.value = '';
+      userName.value = '';
     }
 
     function eventCreate() {
-      branch.track('random-event', function(err,data) {
-        alert('error: ' + err + ' data: ' + JSON.stringify(data));
-      });
+      branch.track(eventName.value || 'blank');
     }
 
     function referralReward() {
       // 10
-      branch.track('done', function(err,data) {
-        alert('error: ' + err + ' data: ' + JSON.stringify(data));
-      });
+      branch.track('done');
     }
 
     function referralRedeem() {
