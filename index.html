@@ -1,24 +1,25 @@
 <!doctype html>
-<html>
+<html class="no-js" lang="">
 <head>
+  <title>Branch Testing</title>
+
   <!-- meta -->
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='chrome=1'>
-  <title>Branch Testing</title>
-  <meta name='viewport' content='width=device-width'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="branch testing">
 
   <!-- styles -->
   <style type='text/css' media='screen'>
-    * { margin: 0; padding: 0; box-sizing: border-box; color: #212121; text-align: center; border: none;}
-    fieldset { width: 90%; max-width: 30em; border: 0.2em solid #212121; margin: 0 auto;}
-    body { background-color: #fafafa; border-top: 0.5em solid #212121; }
+    * { margin: 0; padding: 0; box-sizing: border-box; color: #303030; background-color: #ffffff; text-align: center; border: none;}
+    fieldset { width: 90%; max-width: 35em; border: 0.3em solid #f5f5f5; margin: 0 auto;}
+    legend {padding: 1em; }
+    body { border-top: 0.5em solid #303030; }
     button, input, p { padding: 1em; margin: 0.5em auto; width: 90%; font-size: 1em;}
-    button { background-color: #212121; color: #ffffff; }
-    input { background-color: #fafafa; color: #212121; }
+    button { background-color: #f5f5f5; }
     a { text-decoration: none; color: #03a9f4; }
     footer p { padding: 0; }
   </style>
-  <!--[if lt IE 9]><script src='//html5shiv.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
 </head>
 <body>
   <!-- content -->
@@ -28,27 +29,27 @@
     </header>
     <section>
       <fieldset>
-        <legend>Link</legend>
+        <legend><h3>Link</h3></legend>
         <button type='button' id='link'>Link Create</button>
         <button id='button' hidden></button>
         <p id='anchor-wrapper' hidden><a id='anchor'></a></p>
         <p><a href='https://dashboard.branch.io/liveview/links' target="_blank">/liveview/links</a></p>
       </fieldset>
       <fieldset>
-        <legend>User</legend>
+        <legend><h3>User</h3></legend>
         <input type='text' placeholder='user id' id='user'>
         <button type='button' id='login'>User Login</button>
         <button type='button' id='logout'>User Logout</button>
         <p><a href='https://dashboard.branch.io/liveview/identities' target="_blank">/liveview/identities</a></p>
       </fieldset>
       <fieldset>
-        <legend>Event</legend>
+        <legend><h3>Events</h3></legend>
         <input type='text' placeholder='event name' id='event'>
         <button type='button' id='track'>Event Create</button>
         <p><a href='https://dashboard.branch.io/liveview/events' target="_blank">/liveview/events</a></p>
       </fieldset>
       <fieldset>
-        <legend>Referrals</legend>
+        <legend><h3>Referrals</h3></legend>
         <button type='button' id='reward'>Referral Reward</button>
         <button type='button' id='redeem'>Referral Redeem</button>
         <button type='button' id='credits'>Referral Credits</button>
@@ -77,7 +78,7 @@
     var anchor = document.getElementById('anchor');
     var userName = document.getElementById('user');
     var eventName = document.getElementById('event');
-    
+
     // branch import
     (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
 
