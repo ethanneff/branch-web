@@ -37,6 +37,12 @@
         <p><a href='https://dashboard.branch.io/liveview/links' target="_blank">/liveview/links</a></p>
       </fieldset>
       <fieldset>
+        <legend><h3>SMS</h3></legend>
+        <input type='text' placeholder='phone number' id='phone'>
+        <button type='button' id='sms'>Text Me The Link</button>
+        <p><a href='https://dashboard.branch.io/liveview/links' target="_blank">/liveview/links</a></p>
+      </fieldset>      
+      <fieldset>
         <legend><h3>User</h3></legend>
         <input type='text' placeholder='user id' id='user'>
         <button type='button' id='login'>User Login</button>
@@ -67,6 +73,7 @@
   <script type='text/javascript'>
     // cache DOM
     document.getElementById('link').addEventListener('click', linkCreate);
+    document.getElementById('sms').addEventListener('click', linkSms);
     document.getElementById('login').addEventListener('click', userLogin);
     document.getElementById('logout').addEventListener('click', userLogout);
     document.getElementById('track').addEventListener('click', eventCreate);
@@ -77,6 +84,7 @@
     var button = document.getElementById('button');
     var anchorWrapper = document.getElementById('anchor-wrapper');
     var anchor = document.getElementById('anchor');
+    var phoneNumber = document.getElementById('phone');
     var userName = document.getElementById('user');
     var eventName = document.getElementById('event');
 
@@ -88,7 +96,7 @@
 
     // branch methods
     function linkCreate() {
-      branch.link({
+      var linkData = {
         tags: [ 'tag1', 'tag2' ],
         channel: 'facebook',
         feature: 'dashboard',
@@ -103,13 +111,42 @@
           '$deeplink_path': 'us/store/8333',
           '$og_image_url':'http://lorempixel.com/400/400'
         }
-      }, function(err, link) {
+      };
+      
+      branch.link(linkData, function(err, link) {
         button.removeAttribute('hidden');
         anchorWrapper.removeAttribute('hidden');
         button.onclick = function () { window.open(link || err); };
         button.innerHTML = '<span>' + link || err + ' = link already exists with that alias' + '</span>';
         anchor.href = link || err + ' = link already exists with that alias';
         anchor.innerHTML = link || err + ' = link already exists with that alias';
+      });
+    }
+    
+    function linkSms() {
+      var phone = phoneNumber.value.replace(/\D/g,'') || 'blank';
+      var linkOptions = { 
+        make_new_link: true
+      };
+      var linkData = {
+        tags: [ 'tag1', 'tag2' ],
+        channel: 'facebook',
+        feature: 'dashboard',
+        stage: 'new user',
+        alias: '',
+        data: {
+          'custom_bool': true,
+          'custom_int': 123,
+          'custom_string': 'hello',
+          '$og_title': Date.now(),
+          '$og_description': 'Description',
+          '$deeplink_path': 'us/store/8333',
+          '$og_image_url':'http://lorempixel.com/400/400'
+        }
+      };
+      
+      branch.sendSMS(phone, linkData, linkOptions, function(err, link) { 
+        console.log(err); 
       });
     }
 
